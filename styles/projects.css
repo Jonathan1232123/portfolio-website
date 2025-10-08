@@ -1,0 +1,293 @@
+.projects-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  box-sizing: border-box;
+}
+
+.project-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 20px;  /* reduce vertical padding */
+  box-sizing: border-box;
+}
+
+.project-container h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+.project-border {
+  position: relative;
+  display: flex; /* shrink-wrap */
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px; /* same as card + a little more */
+  padding: 4px; /* thickness of glowing border */
+  transition: box-shadow 0.4s ease;
+  cursor: pointer;
+  margin: 0 auto;
+  /* initial glowing animated border */
+  box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.7);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* Remove glow on hover */
+.project-border:hover {
+  animation: none;
+  box-shadow: none;
+}
+
+/* Your existing project card */
+.project-card {
+  width: 300px;
+  height: 450px;
+  max-width: 100%;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.4s ease, height 0.4s ease;
+  position: relative;
+}
+
+/* Expand card on hover of the card itself */
+
+
+.ui-project-card {
+  transition: none; /* no hover transitions */
+}
+
+
+/* Glow pulse keyframes */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 25px 5px rgba(255, 255, 255, 1);
+  }
+}
+
+.project-video {
+  width: 100%;
+  height: 100%;        /* fills the parent */
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.project-description {
+  max-width: 700px;      /* limit width for readability */
+  color: #ccc;           /* lighter color for subtlety */
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*.project-video {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}*/
+
+@media (min-width: 769px) {
+  .project-card:not(.ui-project-card):hover {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    pointer-events: none;
+  }
+}
+
+/* Base size same as other project cards */
+.ui-project-card {
+  width: 300px;  /* same as .project-card default */
+  height: 450px;
+  overflow: visible; /* so the image can expand without being clipped */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;           /* centers the card in its parent */
+  transform-origin: center; /* expand from center instead of top-left */
+  transition: all 0.4s ease;
+}
+
+/* Expanded state triggered manually */
+.ui-project-card.expanded {
+  position: fixed;              /* break out of layout */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;                  /* take up most of screen */
+  height: 80vh;
+  z-index: 1000;                /* sit on top of everything */
+  background: #000;             /* optional backdrop */
+  border-radius: 10px;
+  transition: all 0.4s ease;
+} 
+
+
+/* Remove any hover expand effect for this card */
+/*.project-card:not(.ui-project-card):hover {
+  width: 600px;
+  height: 600px;
+} */
+
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Carousel slides stack on top of each other */
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-slide img,
+.carousel-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* crop from all sides evenly */
+  transition: transform 0.3s ease;
+}
+
+.ui-project-card.expanded .carousel-slide img,
+.ui-project-card.expanded .carousel-slide video {
+  width: 200%;   /* zoom in on the expanded card */
+  height: 200%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* Description text inside slides */
+.carousel-text {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  right: 20px;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  background: rgba(0,0,0,0.4);
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.carousel-slide.active .carousel-text {
+  opacity: 1;
+}
+
+/* Navigation arrows */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  z-index: 950; /* above the image */
+}
+
+.carousel-arrow:hover {
+  background: rgba(252, 0, 0, 0.8);
+}
+
+.left-arrow {
+  left: 15px; /* outside the panel */
+}
+.right-arrow {
+  right: 15px; /* outside the panel */
+}
+
+.expand-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  font-weight: bold;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 950;
+  transition: all 0.3s ease;
+}
+
+.ui-project-card.expanded .expand-button {
+  background-color: #00000099;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  padding: 0;
+}
+
+.expand-button:hover {
+  background-color: #d62828;
+}
+
+/* When expanded, move the controls outward to match larger image size */
+.ui-project-card.expanded .carousel-arrow.left-arrow {
+  left: -100px;  /* move further left */
+}
+
+.ui-project-card.expanded .carousel-arrow.right-arrow {
+  right: -100px; /* move further right */
+}
+
+.ui-project-card.expanded .expand-button {
+  top: -50px;    /* move slightly above image */
+  right: -50px;  /* move slightly outward */
+}
+
+.carousel-arrow,
+.expand-button {
+  transition: all 0.3s ease;
+}
+
+
+

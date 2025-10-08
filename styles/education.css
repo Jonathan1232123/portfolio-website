@@ -1,0 +1,252 @@
+.education-page{
+  width: 100%;
+}
+
+.education-title {
+  color: red;
+  font-size: 4rem;
+  margin: 0;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.degree-title,
+.grad-date {
+  color: white;
+  font-size: 2.5rem;
+  margin-left: 2rem;
+}
+
+.grad-date{
+  background-color: rgb(65, 65, 65);
+  display: block;       /* make sure it’s block-level */
+  margin: 40px auto;    /* vertical 20px margin, horizontal auto to center */
+  width: fit-content;   /* or set a fixed width if you want */
+  padding: 10px 20px;   /* optional, for button size */
+  text-align: center;   /* center text inside */
+  color: white;         /* optional, text color */
+  cursor: pointer;      /* optional, makes it look clickable */
+  border: none;         /* optional, style as needed */
+  border-radius: 30px;   /* optional, for rounded corners */
+}
+
+.degree-info-container{
+  max-width: 1000px;
+  width: 90%;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(65, 65, 65);
+  border-radius: 8px;
+  transition: transform 0.3s ease; /* smooth animation */
+  cursor: pointer;
+}
+
+.degree-info-container:hover {
+  transform: scale(1.03); /* slightly enlarge */
+}
+
+.program-description{
+  color: white;
+  margin-left: 2rem;
+  width: 700px;
+  line-height: 1.5;
+  margin-left: 2rem;
+  max-width: 700px;
+}
+
+.courses{
+  color: white;
+  max-width: 1000px;
+  width: 90%;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(65, 65, 65);
+  border-radius: 8px;
+  transition: transform 0.3s ease; /* smooth animation */
+  cursor: pointer;
+}
+
+.courses:hover {
+  transform: scale(1.03);
+}
+
+.skills-gained{
+  color: white;
+  max-width: 1000px;
+  width: 90%;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(65, 65, 65);
+  border-radius: 8px;
+  transition: transform 0.3s ease; /* smooth animation */
+  cursor: pointer;
+}
+
+.skills-gained:hover {
+  transform: scale(1.03);
+}
+
+.courses ul, .skills-gained ul {
+  margin-bottom: 20px;
+}
+
+.awards-title {
+  color: white;
+  font-size: 70px;
+  text-align: center;
+  margin: 0;
+  margin-top: 30px;
+}
+
+.award-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  position: relative;
+}
+
+.float-wrapper {
+  display: inline-block;
+  animation: floatyEffect 6s ease-in-out infinite;
+}
+
+.reward-img {
+  width: 700px;
+  border-radius: 12px;
+  padding: 10px;
+  background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet, red);
+  background-size: 400% 400%;
+  animation: rainbowBorder 12s linear infinite;
+
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2),
+              0 0 35px rgba(255, 0, 255, 0.4),
+              0 0 60px rgba(0, 255, 255, 0.3);
+
+  transition: transform 0.3s ease;
+}
+
+.reward-img:hover {
+  transform: scale(1.05) translateY(-2px);
+}
+
+@keyframes rainbowBorder {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+@keyframes floatyEffect {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.achievements {
+  color: white;
+  max-width: 1000px;
+  flex-direction: column;
+  text-align: center; /* optional, for better visual alignment */
+  width: 90%;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(65, 65, 65);
+  border-radius: 8px;
+  transition: transform 0.3s ease; /* smooth animation */
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s ease; /* smooth animation */
+}
+
+.achievements:hover {
+  transform: scale(1.03);
+}
+
+.a-title {
+  color: white;
+  font-size: 2.5rem;
+  margin-left: 2rem;
+}
+
+@media (max-width: 768px) {
+  .education-page {
+    padding: 1rem;
+  }
+
+  .education-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .degree-title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .program-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: justify;
+  }
+
+  .courses h2,
+  .skills-gained h2,
+  .awards-title,
+  .a-title {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  ul {
+    font-size: 0.95rem;
+    padding-left: 1rem;
+  }
+
+  .reward-img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .grad-date {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    margin: 2rem auto;
+    display: block;
+    width: fit-content;
+  }
+}
+
+
+
+
+/*.float-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.particles-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}*/
+
