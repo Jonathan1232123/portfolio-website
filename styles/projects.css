@@ -64,8 +64,78 @@
 /* Expand card on hover of the card itself */
 
 
+/* Base UI Project Card */
 .ui-project-card {
-  transition: none; /* no hover transitions */
+  width: 300px;
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transform-origin: center;
+  transition: all 0.4s ease;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+/* Expanded State */
+.ui-project-card.expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;   /* full screen width */
+  height: 100vh;  /* full screen height */
+  z-index: 9999;
+  background: #000;
+  border-radius: 0;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+/* Proper scaling for images and videos */
+.carousel-slide img,
+.carousel-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Expanded view keeps content fully visible */
+.ui-project-card.expanded .carousel-slide img,
+.ui-project-card.expanded .carousel-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Adjust UI elements when expanded */
+.ui-project-card.expanded .expand-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #00000099;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  z-index: 1100;
+}
+
+.ui-project-card.expanded .carousel-arrow.left-arrow {
+  left: 30px;
+}
+
+.ui-project-card.expanded .carousel-arrow.right-arrow {
+  right: 30px;
+}
+
+.carousel-arrow,
+.expand-button {
+  transition: all 0.3s ease;
 }
 
 
@@ -117,40 +187,35 @@
 }
 
 /* Base size same as other project cards */
-.ui-project-card {
-  width: 300px;  /* same as .project-card default */
+
+/*.ui-project-card {
+  width: 300px;  
   height: 450px;
-  overflow: visible; /* so the image can expand without being clipped */
+  overflow: visible; 
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;           /* centers the card in its parent */
-  transform-origin: center; /* expand from center instead of top-left */
+  margin: 0 auto;           
+  transform-origin: center; 
   transition: all 0.4s ease;
-}
+} 
+*/
 
 /* Expanded state triggered manually */
-.ui-project-card.expanded {
-  position: fixed;              /* break out of layout */
+/*.ui-project-card.expanded {
+  position: fixed;              
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80vw;                  /* take up most of screen */
+  width: 80vw;                  
   height: 80vh;
-  z-index: 1000;                /* sit on top of everything */
-  background: #000;             /* optional backdrop */
+  z-index: 1000;                
+  background: #000;             
   border-radius: 10px;
   transition: all 0.4s ease;
 } 
-
-
-/* Remove any hover expand effect for this card */
-/*.project-card:not(.ui-project-card):hover {
-  width: 600px;
-  height: 600px;
-} */
-
+*/
 
 .carousel {
   display: flex;
@@ -188,14 +253,14 @@
   transition: transform 0.3s ease;
 }
 
-.ui-project-card.expanded .carousel-slide img,
+/*.ui-project-card.expanded .carousel-slide img,
 .ui-project-card.expanded .carousel-slide video {
-  width: 200%;   /* zoom in on the expanded card */
+  width: 200%;   
   height: 200%;
   object-fit: cover;
   object-position: center;
 }
-
+*/
 
 /* Description text inside slides */
 .carousel-text {
@@ -228,7 +293,7 @@
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
-  z-index: 950; /* above the image */
+  z-index: 1100; /* above the image */
 }
 
 .carousel-arrow:hover {
@@ -253,7 +318,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 950;
+  z-index: 1200;
   transition: all 0.3s ease;
 }
 
@@ -272,21 +337,56 @@
 
 /* When expanded, move the controls outward to match larger image size */
 .ui-project-card.expanded .carousel-arrow.left-arrow {
-  left: -100px;  /* move further left */
+  left: 30px;  /* keep visible near the left edge */
 }
 
 .ui-project-card.expanded .carousel-arrow.right-arrow {
-  right: -100px; /* move further right */
+  right: 30px; /* keep visible near the right edge */
 }
 
 .ui-project-card.expanded .expand-button {
-  top: -50px;    /* move slightly above image */
-  right: -50px;  /* move slightly outward */
+  top: 20px;   /* keep visible near the top-right corner */
+  right: 20px;
 }
+
 
 .carousel-arrow,
 .expand-button {
   transition: all 0.3s ease;
+}
+
+/* === Stronger scale for vertical videos === */
+
+.carousel-slide.vertical-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  background: #000;
+}
+
+/* Scaled-up portrait video */
+.carousel-slide.vertical-slide .vertical-video {
+  height: 100%;
+  width: auto;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+  transform: scale(4); /* 🔥 make it 3–4× larger visually */
+  transition: transform 0.3s ease;
+}
+
+/* Expanded version — fit full screen cleanly */
+.ui-project-card.expanded .carousel-slide.vertical-slide .vertical-video {
+  height: 100%;
+  width: auto;
+  max-width: 70%;
+  transform: scale(1); /* normal scale for expanded view */
+  object-fit: contain;
 }
 
 
