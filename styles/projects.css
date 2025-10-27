@@ -103,16 +103,6 @@
   object-position: center;
 }
 
-/* Expanded view keeps content fully visible */
-/*.ui-project-card.expanded .carousel-slide img,
-.ui-project-card.expanded .carousel-slide video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
-*/
-
 /* Adjust UI elements when expanded */
 .ui-project-card.expanded .expand-button {
   position: fixed;
@@ -189,20 +179,6 @@
 
 /* Base size same as other project cards */
 
-/*.ui-project-card {
-  width: 300px;  
-  height: 450px;
-  overflow: visible; 
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;           
-  transform-origin: center; 
-  transition: all 0.4s ease;
-} 
-*/
-
 /* Expanded state triggered manually */
 /*.ui-project-card.expanded {
   position: fixed;              
@@ -253,15 +229,6 @@
   object-position: center; /* crop from all sides evenly */
   transition: transform 0.3s ease;
 }
-
-/*.ui-project-card.expanded .carousel-slide img,
-.ui-project-card.expanded .carousel-slide video {
-  width: 200%;   
-  height: 200%;
-  object-fit: cover;
-  object-position: center;
-}
-*/
 
 /* Description text inside slides */
 .carousel-text {
@@ -368,7 +335,8 @@
 }
 
 /* Scaled-up portrait video */
-.carousel-slide.vertical-slide .vertical-video {
+
+/*.carousel-slide.vertical-slide .vertical-video {
   width: 100%;
   height: 100%;
   max-height: 100%;
@@ -379,6 +347,7 @@
   margin: 0 auto;
   transition: 0.3s ease;
 }
+*/
 
 /* === Final fix for expanded view === */
 .ui-project-card.expanded .carousel-slide img,
