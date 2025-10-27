@@ -104,13 +104,14 @@
 }
 
 /* Expanded view keeps content fully visible */
-.ui-project-card.expanded .carousel-slide img,
+/*.ui-project-card.expanded .carousel-slide img,
 .ui-project-card.expanded .carousel-slide video {
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
 }
+*/
 
 /* Adjust UI elements when expanded */
 .ui-project-card.expanded .expand-button {
@@ -380,14 +381,43 @@
   transition: transform 0.3s ease;
 }
 
-/* Expanded version — fit full screen cleanly */
-.ui-project-card.expanded .carousel-slide.vertical-slide .vertical-video {
-  height: 100%;
-  width: auto;
-  max-width: 70%;
-  transform: scale(1); /* normal scale for expanded view */
-  object-fit: contain;
+
+/* --- Force full-screen video expansion --- */
+.ui-project-card.expanded {
+  width: 100vw !important;
+  height: 100vh !important;
+  background: black !important;
+  overflow: hidden !important;
 }
+
+.ui-project-card.expanded .carousel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.ui-project-card.expanded .carousel-slide.vertical-slide {
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  background: black;
+}
+
+.ui-project-card.expanded .carousel-slide.vertical-slide .vertical-video {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  transform: none !important;
+}
+
 
 
 
