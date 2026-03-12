@@ -61,3 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
     expandButton.textContent = uiCard.classList.contains('expanded') ? '×' : 'Expand';
   });
 });
+
+const animationCard = document.querySelector(".animation-card");
+const animationVideo = document.querySelector(".animation-video");
+
+animationCard.addEventListener("mouseenter", () => {
+  animationVideo.play();
+});
+
+animationCard.addEventListener("mouseleave", () => {
+  animationVideo.pause();
+  animationVideo.currentTime = 0;
+});
